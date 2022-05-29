@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  glfsi:
+    build:
+      context: .
+      args:
+        - IMAGE=${IMAGE}
+    image: glfsi
+    container_name: glfsi
+    network_mode: host
+    volumes:
+      - ${PREFIX}:${PREFIX}
+    environment:
+      - GIT_LFS_VERSION=${GIT_LFS_VERSION}
+      - PREFIX=${PREFIX}
+      - MODE=${MODE:-install}
+    userns_mode: host
