@@ -1,6 +1,6 @@
 [![minimal-readme compliant](https://img.shields.io/badge/readme%20style-minimal-brightgreen.svg)](https://github.com/RichardLitt/standard-readme/blob/master/example-readmes/minimal-readme.md) [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) <a href="https://benz0li.b-data.io/donate?project=4"><img src="https://benz0li.b-data.io/donate/static/donate-with-fosspay.png" alt="Donate with fosspay"></a> <a href="https://liberapay.com/benz0li/donate"><img src="https://liberapay.com/assets/widgets/donate.svg" alt="Donate using Liberapay" height="20"></a>
 
-# Git LFS install
+# Dockerised Git LFS installation
 
 [This project](https://gitlab.com/b-data/git-lfs/glfsi) is intended for system
 administrators who want to perform an installation of Git LFS on any Linux
@@ -23,11 +23,11 @@ This projects requires an installation of docker and docker compose.
 To install docker, follow the instructions for your platform:
 
 *  [Install Docker Engine | Docker Documentation > Supported platforms](https://docs.docker.com/engine/install/#supported-platforms)
-*  [Post-installation steps for Linux](https://docs.docker.com/engine/install/linux-postinstall/)
+*  [Post-installation steps for Linux | Docker Documentation](https://docs.docker.com/engine/install/linux-postinstall/)
 
 ### Docker Compose
 
-*  [Install Docker Compose](https://docs.docker.com/compose/install/)
+*  [Install Docker Compose | Docker Documentation](https://docs.docker.com/compose/install/)
 
 ## Install
 

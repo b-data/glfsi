@@ -9,10 +9,11 @@ services:
     image: glfsi
     container_name: glfsi
     network_mode: host
+    userns_mode: host
     volumes:
-      - ${PREFIX}:${PREFIX}
+      - ${PREFIX:-/usr/local}:${PREFIX:-/usr/local}
+      - /etc:/tmp/etc
     environment:
       - GIT_LFS_VERSION=${GIT_LFS_VERSION}
-      - PREFIX=${PREFIX}
+      - PREFIX=${PREFIX:-/usr/local}
       - MODE=${MODE:-install}
-    userns_mode: host
