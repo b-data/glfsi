@@ -4,7 +4,7 @@
 
 [This project](https://gitlab.com/b-data/git-lfs/glfsi) is intended for system
 administrators who want to perform an installation of Git LFS on any Linux
-distribution.
+distribution using a docker container.
 
 ## Table of Contents
 
