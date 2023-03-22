@@ -23,7 +23,7 @@ sed -i 's/git lfs install/#git lfs install/g' install.sh
 
 echo '
 # According to https://www.debian.org/doc/debian-policy/ch-opersys.html#site-specific-programs
-if [[ "$PREFIX" == "/usr/local" && -e /tmp/etc/staff-group-for-usr-local ]]; then
+if [[ "$prefix" == "/usr/local" && -e /tmp/etc/staff-group-for-usr-local ]]; then
   perm=2775
   group=staff
 else
@@ -32,9 +32,11 @@ else
 fi
 
 mkdir -p $prefix/share
-mkdir -m$perm -p $prefix/share/man
+mkdir -p $prefix/share/man
+chmod $perm $prefix/share/man
 chown root:$group $prefix/share/man
-mkdir -m$perm -p $prefix/share/man/man1
+mkdir -p $prefix/share/man/man1
+chmod $perm $prefix/share/man/man1
 chown root:$group $prefix/share/man/man1
 rm -rf $prefix/share/man/man1/git-lfs*
 
@@ -50,7 +52,8 @@ pushd "$( dirname "${BASH_SOURCE[0]}" )/man$suffix" > /dev/null
   done
 popd > /dev/null
 
-mkdir -m$perm -p $prefix/share/man/man5
+mkdir -p $prefix/share/man/man5
+chmod $perm $prefix/share/man/man5
 chown root:$group $prefix/share/man/man5
 rm -rf $prefix/share/man/man5/git-lfs*
 
