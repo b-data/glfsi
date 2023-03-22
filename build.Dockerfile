@@ -18,10 +18,10 @@ COPY scripts/*.sh /usr/bin/
 
 RUN start.sh
 
-FROM ${IMAGE}
+FROM scratch
 
 LABEL org.opencontainers.image.licenses="MIT" \
-      org.opencontainers.image.source="https://gitlab.com/b-data/git-lfs/glfsi" \
+      org.opencontainers.image.source="https://gitlab.b-data.ch/git-lfs/glfsi" \
       org.opencontainers.image.vendor="b-data GmbH" \
       org.opencontainers.image.authors="Olivier Benz <olivier.benz@b-data.ch>"
 
