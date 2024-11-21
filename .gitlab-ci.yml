@@ -41,9 +41,9 @@ build:version-linux-amd64:
     - docker push $CI_APP_REPO:$GIT_LFS_VERSION-linux-amd64
     - |
       if [[ "$TAG_LATEST" == "true" ]]; then
-        docker tag $CI_APP_REPO/$GIT_LFS_VERSION/$IMAGE-linux-amd64 \
-          $CI_APP_REPO/latest/$IMAGE-linux-amd64
-        docker push $CI_APP_REPO/latest/$IMAGE-linux-amd64
+        docker tag $CI_APP_REPO:$GIT_LFS_VERSION-linux-amd64 \
+          $CI_APP_REPO:latest-linux-amd64
+        docker push $CI_APP_REPO:latest-linux-amd64
       fi
   rules:
     - if: $CI_COMMIT_BRANCH == "main" && $CI_BUILD_PLATFORMS =~ /(linux\/amd64)/
@@ -66,9 +66,9 @@ build:version-linux-arm64v8:
     - docker push $CI_APP_REPO:$GIT_LFS_VERSION-linux-arm64v8
     - |
       if [[ "$TAG_LATEST" == "true" ]]; then
-        docker tag $CI_APP_REPO/$GIT_LFS_VERSION/$IMAGE-linux-arm64v8 \
-          $CI_APP_REPO/latest/$IMAGE-linux-arm64v8
-        docker push $CI_APP_REPO/latest/$IMAGE-linux-arm64v8
+        docker tag $CI_APP_REPO:$GIT_LFS_VERSION-linux-arm64v8 \
+          $CI_APP_REPO:latest-linux-arm64v8
+        docker push $CI_APP_REPO:latest-linux-arm64v8
       fi
   rules:
     - if: $CI_COMMIT_BRANCH == "main" && $CI_BUILD_PLATFORMS =~ /(linux\/arm64\/v8)/
@@ -93,12 +93,12 @@ build-manifest:version-linux-multiarch:
       docker manifest push $CI_APP_REPO:$GIT_LFS_VERSION
     - |
       if [[ "$TAG_LATEST" == "true" ]]; then
-        docker manifest create $CI_APP_REPO/latest/$IMAGE $CI_MANIFEST_LIST
+        docker manifest create $CI_APP_REPO:latest $CI_MANIFEST_LIST
         if echo $OS_ARCH | grep "linux-arm64v8" >/dev/null ; then
-          docker manifest annotate --variant v8 $CI_APP_REPO/latest/$IMAGE \
-            $CI_APP_REPO/$GIT_LFS_VERSION/$IMAGE-linux-arm64v8
+          docker manifest annotate --variant v8 $CI_APP_REPO:latest \
+            $CI_APP_REPO:$GIT_LFS_VERSION-linux-arm64v8
         fi
-        docker manifest push $CI_APP_REPO/latest/$IMAGE
+        docker manifest push $CI_APP_REPO:latest
       fi
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
