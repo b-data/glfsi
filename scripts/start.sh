@@ -67,6 +67,23 @@ pushd "$( dirname "${BASH_SOURCE[0]}" )/man$suffix" > /dev/null
   for g in *.5; do
     install -m0644 $g "$prefix/share/man/man5/$g"
   done
+popd > /dev/null
+
+mkdir -p $prefix/share/man/man7
+chmod $perm $prefix/share/man/man7
+chown root:$group $prefix/share/man/man7
+rm -rf $prefix/share/man/man7/git-lfs*
+
+if [[ -d man/man7 ]]; then
+  suffix=/man7
+else
+  suffix=
+fi
+
+pushd "$( dirname "${BASH_SOURCE[0]}" )/man$suffix" > /dev/null
+  for g in *.7; do
+    install -m0644 $g "$prefix/share/man/man7/$g"
+  done
 popd > /dev/null' >> install.sh
 
 echo '#!/usr/bin/env bash
@@ -83,9 +100,11 @@ fi
 rm -rf $prefix/bin/git-lfs*
 rm -rf $prefix/share/man/man1/git-lfs*
 rm -rf $prefix/share/man/man5/git-lfs*
+rm -rf $prefix/share/man/man7/git-lfs*
 
 rmdir $prefix/share/man/man1 2>&1 | sed "s|^|INFO:   |"
-rmdir $prefix/share/man/man5 2>&1 | sed "s|^|INFO:   |"' > uninstall.sh
+rmdir $prefix/share/man/man5 2>&1 | sed "s|^|INFO:   |"
+rmdir $prefix/share/man/man7 2>&1 | sed "s|^|INFO:   |"' > uninstall.sh
 chmod +x uninstall.sh
 
 if [[ -f "${MODE}.sh" ]]; then
